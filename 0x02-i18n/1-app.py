@@ -7,13 +7,13 @@ app = Flask(__name__)
 babel = Babel
 
 class Config:
-    """Flask Config"""
-    LANGAUGES = ["en", "fr"]
-
+    """Config Class"""
+    LANGUAGES = ["en", "fr"]
+    BABEL_DEFAULT_LOCALE = 'en'
+    BABEL_DEFAULT_TIMEZONE = 'UTC'
 
 app.config.from_object(Config)
-
-babel.init_app(app, default_locale="en", default_timezone="UTC")
+babel.init(app)
 
 
 @app.route('/')
