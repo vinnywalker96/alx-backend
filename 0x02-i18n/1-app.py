@@ -4,13 +4,9 @@ from flask import Flask, render_template
 from flask_babel import Babel
 
 app = Flask(__name__)
+babel = Babel()
 
-<<<<<<< HEAD
-
-class Config(object):
-=======
 class Config:
->>>>>>> parent of 326f7f9... Babel config
     """Config Class"""
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = 'en'
@@ -18,8 +14,6 @@ class Config:
 
 app.config.from_object(Config)
 babel.init(app)
-
-babel = Bable(app)
 
 
 @app.route('/')
