@@ -4,7 +4,7 @@ from flask import Flask, render_template
 from flask_babel import Babel
 
 app = Flask(__name__)
-
+babel = Babel
 
 class Config:
     """Flask Config"""
@@ -12,8 +12,6 @@ class Config:
 
 
 app.config.from_object(Config)
-
-babel = Babel(app)
 
 babel.init_app(app, default_locale="en", default_timezone="UTC")
 
