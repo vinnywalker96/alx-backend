@@ -10,12 +10,11 @@ babel = Babel(app)
 class Config:
     """Flask Config"""
     LANGAUGES = ["en", "fr"]
-    BABEL_DEFAULT_LOCALE = 'en'
-    BABEL_DEFAULT_TIMEZONE = 'UTC'
 
 
 app.config.from_object(Config)
-
+app.config['BABEL_DEAFULT_LOCALE'] = "en"
+app.config['BABEL_DEFAULT_TIMEZONE'] = "UTC"
 
 @app.route('/')
 def index():
