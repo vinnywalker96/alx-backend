@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """ FLask APP"""
 from flask import Flask, render_template
 
@@ -7,6 +7,9 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
+    """Returns
+    Hello World
+    """
     return render_template('0-index.html')
 
 
