@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """ FLask APP"""
 from flask import Flask, render_template, request
-from flask_babel import Babel, _
+from flask_babel import Babel, _, get_locale
 
 app = Flask(__name__)
 
@@ -18,6 +18,12 @@ app.config.from_object(Config)
 babel = Babel(app)
 
 
+@babel.localeselector
+def get_locale():
+    """Request languages"""
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
+
+
 @app.route('/')
 def index():
     """
@@ -27,11 +33,5 @@ def index():
     return render_template('3-index.html')
 
 
-@babel.localeselector
-def get_locale():
-    """requests languages"""
-    return request.accept_languages.best_match(app.config['LANGUAGES'])
-
-
 if __name__ == "__main__":
-    app.run(host="0.0.0.0")
+    app.run(host="0.0.0.0", debug=True)
