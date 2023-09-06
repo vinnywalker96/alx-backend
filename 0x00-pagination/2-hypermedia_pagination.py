@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Simple Pagination"""
 import csv
+import math
 from typing import List, Dict
 
 index_range = __import__('0-simple_helper_function').index_range
@@ -41,25 +42,22 @@ class Server:
 
         return []
 
-
     def get_hyper(self, page: int, page_size: int) -> Dict:
         """Return page data
-        
         Args:
-            page: int 
+            page: int
             page_size: int
         """
         data = self.get_page(page, page_size)
-        total_items = len(data)
-        total_pages = total_items // page_size
-        if total_items % page_size != 0:
-            total_pages += 1
+        total_pages = math.ceil(len(self.dataset()) / page_size)
+        next_page = page - 1 if page < total_pages else None
+        prev_page = page + 1 if page > 1 else None
         page_data = {
                 'page_size': page_size,
                 'page': page,
                 'data': data,
-                'next_page': None,
-                'prev_page': None,
+                'next_page': next_page,
+                'prev_page': prev_page,
                 'total_pages': total_pages
         }
         return page_data
