@@ -20,9 +20,10 @@ class FIFOCache(BaseCaching):
             data = next(iter(self.cache_data))
             del self.cache_data[data]
             print(f"DISCARD {data}")
+        self.cache_data[key] = item
 
     def get(self, key):
         """get data by key"""
         if key is None or key not in self.cache_data:
             return None
-        return self.cache_data[key]
+        self.cache_data[key]
