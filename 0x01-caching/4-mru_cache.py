@@ -11,7 +11,7 @@ class MRUCache(BaseCaching):
 
     def __init__(self):
         """
-        Initialize the class 
+        Initialize the class
         """
         super().__init__()
         self.usage = []
