@@ -18,7 +18,7 @@ class FIFOCache(BaseCaching):
             self.cache_data[key] = item
         if len(self.cache_data) > BaseCaching.MAX_ITEMS:
             data = next(iter(self.cache_data))
-            remove = self.cache_data.pop(data)
+            del self.cache_data[data]
             print(f"DISCARD {data}")
 
     def get(self, key):
